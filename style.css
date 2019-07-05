@@ -1,0 +1,183 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: "Segoe Print", fantasy;
+    /*border: 5px inset #ffcb91;*/
+    background-attachment: fixed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.background-container {
+    background-color: rgb(135, 135, 135); /* Fallback color */
+    background-color: rgba(114, 114, 114, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+.background-container-without-color {
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 90%;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.background-image {
+    background-image: url("./images/white_deck_wallpaper.jpg");
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    border: 2px solid white;
+    /*filter: blur(2px);*/
+}
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+.container_with_border {
+    background-color: rgb(135, 135, 135); /* Fallback color */
+    background-color: rgba(114, 114, 114, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: relative;
+    /*transform: translate(-50%, -50%);*/
+    z-index: 2;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+.user_image {
+    width: 150px;
+    height: 150px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    background: white
+}
+.information_bullet1 {
+    position: absolute;
+    top: 25%;
+    left: 33%;
+    transform: rotate(-8deg);
+}
+.information_bullet2 {
+    position: absolute;
+    top: 45%;
+    left: 34%;
+    transform: rotate(-8deg);
+}
+.information_bullet3 {
+    position: absolute;
+    top: 65%;
+    left: 35%;
+    transform: rotate(-8deg);
+}
+
+.notes_information {
+    position: relative;
+    top: 5px;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+}
+
+.error_message {
+    color: pink;
+    font-size: 12px;
+}
+
+input[type=email], input[type=password], input[type=text] {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-top: 8px;
+    transition: 0.25s;
+    width: 180px;
+}
+
+input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
+    border: 2px solid #74b9ff;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-top: 8px;
+    width: 220px;
+}
+
+input[type=submit] {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    color: yellow;
+    cursor: pointer;
+    font-family: "Segoe Print", fantasy;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+input[type=submit]:hover {
+    border: 2px solid #74b9ff;
+    background-color: #74b9ff;
+    border-radius: 5px;
+    color: yellow;
+    cursor: pointer;
+    font-family: "Segoe Print", fantasy;
+    font-weight: bold;
+    margin-top: 8px;
+    transition: 0.25s;
+}
+
+::placeholder {
+    color: yellow;
+    padding: 2px;
+    font-family: "Segoe Print", fantasy;
+}
+
+a:link {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:visited {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}
+a:hover {
+    color: #74b9ff;
+    background-color: transparent;
+    text-decoration: blink;
+    cursor: pointer;
+}
+a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: none;
+}
