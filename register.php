@@ -7,7 +7,7 @@ require 'form_handlers/register_handler.php';
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
     <title>Registration</title>
 </head>
 <body>

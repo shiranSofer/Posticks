@@ -43,7 +43,7 @@ body, html {
 }
 
 .background-image {
-    background-image: url("./images/white_deck_wallpaper.jpg");
+    background-image: url("../images/white_deck_wallpaper.jpg");
     height: 100%;
 
     background-position: center;
