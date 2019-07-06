@@ -1,0 +1,97 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+    font-family: "Segoe Print", fantasy;
+    /*border: 5px inset #ffcb91;*/
+    background-attachment: fixed;
+}
+.wall_container {
+    background-image: url("../images/white_deck_wallpaper.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid white;
+}
+.wrapper{
+    margin: 0 auto;
+    top: 50px;
+    position: relative;
+    padding: 0 10px;
+    width: 75%;
+    min-width: 950px;
+    height: 85%;
+}
+
+.profile_picture {
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    background: white
+}
+
+.column {
+    background-color: rgb(135, 135, 135); /* Fallback color */
+    background-color: rgba(114, 114, 114, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    /*position: relative;*/
+    z-index: 2;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user_details {
+    width: 250px;
+    text-align: center;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.main_column {
+    float: right;
+    width: 72%;
+    z-index: 2;
+    min-height: 160px;
+}
+
+.post_form {
+    width: 100%;
+}
+
+.post_form textarea {
+    width: 80%;
+    height: 60px;
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-right: 5px;
+    transition: 0.25s;
+    font-size: 16px;
+}
+
+.post_form textarea:focus {
+    width: 85%;
+    height: 60px;
+    border: 2px solid #74b9ff;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-right: 5px;
+}
+
+.post_form input[type=submit] {
+    width: 10%;
+    position: absolute;
+    outline: 0;
+    margin-top: 0;
+    height: 60px;
+    margin-right: 5px;
+}

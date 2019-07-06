@@ -1,50 +1,36 @@
 <?php
 include("header.php");
+include("classes/User.php");
+include("classes/Post.php");
+
+if(isset($_POST['post_button'])) {
+    $post = new Post($connection, $user_email);
+    $post->submitPost($_POST['post_textarea'], 'none', 'true');
+}
 ?>
-<!--<!DOCTYPE html>-->
-<!--<html lang="en">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link rel="stylesheet" type="text/css" href="css/style.css">-->
-<!--    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">-->
-<!--    <title>Posticks Board</title>-->
-<!--</head>-->
-<!--<body>-->
-<div class="background-image"></div>
-<table class="background-container-without-color">
-    <tr>
-        <td class="container_with_border" style="width: fit-content">
-            User info
-            <div STYLE="width: fit-content; margin-left: 50%; transform: translate(-50%, -50%)">
-                <img class="user_image" src="images/user_profile/user_icon.png" alt="user picture">
-                <div>
-                    Shiran Sofer
-                </div>
+        <div class="wrapper">
+            <div class="user_details column">
+                <a href="<?php echo str_replace(" ", "_", $user_loggedIn); ?>"> <img class="profile_picture" src="<?php echo $user_info['profile_picture']; ?>" alt="user picture"></a>
+                <br>
+                <?php
+                    echo $user_info['first_name'] . " " . $user_info['last_name'] . "<br>";
+                    echo "Posts: " . $user_info['num_posts'] . "<br>" . "Likes: " . $user_info['num_likes'] . "<br>";
+                ?>
             </div>
-        </td>
-        <td rowspan="2" style="width: 50px"></td> <!--SPACE-->
-        <td colspan="2" rowspan="3">
-            <div class="container_with_border" style="height: 550px; overflow: auto">
-                POSTICKS board<br>
-                <img src="images/posticks/pink_postick.png" style="width: 300px; height: 200px;" alt="postick"><br>
-                <img src="images/posticks/blue_postick.png" style="width: 300px; height: 200px;" alt="postick"><br>
-                <img src="images/posticks/white_postick.png" style="width: 300px; height: 200px;" alt="postick"><br>
-                <img src="images/posticks/yellow_postick.png" style="width: 300px; height: 200px;" alt="postick"><br>
+            <div class="main_column column">
+                <form class="post_form" action="board.php" method="POST">
+                    <label for="post_textarea"></label><textarea name="post_textarea" id="post_textarea" placeholder="Got something to post?"></textarea>
+                    <input type="submit" name="post_button" id="post_button" value="Post">
+                    <hr>
+                </form>
+
+                <?php
+                    $user_obj = new User($connection, $user_email);
+                    echo $user_obj->getFirstAndLastName();
+                ?>
             </div>
-        </td>
-        <td rowspan="2" style="width: 50px"></td> <!--SPACE-->
-        <td class="container_with_border">
-            friends list
-        </td>
-    </tr>
-    <tr>
-        <td class="container_with_border">
-            something
-        </td>
-        <td class="container_with_border">
-            chat
-        </td>
-    </tr>
-</table>
+        </div>
+
+    </div>
 </body>
 </html>
