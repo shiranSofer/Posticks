@@ -25,8 +25,8 @@ if(isset($_POST['post_button'])) {
                 </form>
 
                 <?php
-                    $user_obj = new User($connection, $user_email);
-                    echo $user_obj->getFirstAndLastName();
+                $post = new Post($connection, $user_email);
+                $post->loadPostsOfFriends();
                 ?>
             </div>
         </div>

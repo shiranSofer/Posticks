@@ -38,6 +38,7 @@ class User {
     public function increaseNumberOfPosts() {
         $user_email = $this->user['email'];
         $num_posts = $this->getNumberOfPosts();
-        $update_query = mysqli_query($this->connection, "UPDATE users SET num_posts='$num_posts++' WHERE email='$user_email'");
+        $num_posts++;
+        $update_query = mysqli_query($this->connection, "UPDATE users SET num_posts='$num_posts' WHERE email='$user_email'");
     }
 }
