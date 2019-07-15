@@ -27,6 +27,7 @@ class User {
     public function getNumberOfLikes() {
         return $this->user['num_likes'];
     }
+
     public function getActive() {
         return $this->user['active'];
     }
@@ -40,5 +41,12 @@ class User {
         $num_posts = $this->getNumberOfPosts();
         $num_posts++;
         $update_query = mysqli_query($this->connection, "UPDATE users SET num_posts='$num_posts' WHERE email='$user_email'");
+    }
+
+    public function isFriend($user_email_to_check) {
+        $user_email_with_comma = "," . $user_email_to_check . ",";
+        if(strstr($this->user['friends_array'], $user_email_with_comma) || $user_email_to_check == $this->user['email']) {
+            return true;
+        } else {return false;}
     }
 }

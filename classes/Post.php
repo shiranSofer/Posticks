@@ -47,7 +47,7 @@ class Post {
             $posted_by = $row['posted_by'];
             $date_time = $row['date_created'];
 
-            if($row['posted_to'] == "none") {
+            if ($row['posted_to'] == "none") {
                 $user_to = "";
             } else {
                 $user_to_obj = new User($this->connection, $row['posted_to']);
@@ -57,32 +57,37 @@ class Post {
 
             //check if the posted user has an active account
             $added_by_obj = new User($this->connection, $posted_by);
-            if($added_by_obj->getActive() == false) {
+            if ($added_by_obj->getActive() == false) {
                 continue;
             }
-            if(!mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'"))
-                echo "user details error: ". mysqli_error($this->connection);
-            $user_details_query = mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'");
 
-            $user_details_row = mysqli_fetch_array($user_details_query);
-            $user_first_name = $user_details_row['first_name'];
-            $user_last_name = $user_details_row['last_name'];
-            $user_profile_pic = $user_details_row['profile_picture'];
+            //check if the posted user is friend of logged user
+            if ($this->user_obj->isFriend($posted_by)) {
 
-            $date_message = $this->printPostTime($date_time);
+                if (!mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'"))
+                    echo "user details error: " . mysqli_error($this->connection);
+                $user_details_query = mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'");
 
-            $str .= "<div class='status_post'>
-                        <div class='post_profile_pic'>
-                            <img src='$user_profile_pic' width='50'>
+                $user_details_row = mysqli_fetch_array($user_details_query);
+                $user_first_name = $user_details_row['first_name'];
+                $user_last_name = $user_details_row['last_name'];
+                $user_profile_pic = $user_details_row['profile_picture'];
+
+                $date_message = $this->printPostTime($date_time);
+
+                $str .= "<div class='status_post'>
+                            <div class='post_profile_pic'>
+                                <img src='$user_profile_pic' width='50'>
+                            </div>
+                            <div class='posted_by'>
+                                <a href='$posted_by'> $user_first_name $user_last_name</a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;
+                                $date_message
+                            </div>
+                            <div id='post_body'>$body<br></div>
+                            <br>
                         </div>
-                        <div class='posted_by' style='color: white;'>
-                            <a href='$posted_by'> $user_first_name $user_last_name</a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;
-                            $date_message
-                        </div>
-                        <div id='post_body'>$body<br></div>
-                        <br>
-                    </div>
-                    <hr>";
+                        <hr>";
+            }
         }
         echo $str;
     }

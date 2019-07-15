@@ -69,7 +69,8 @@ if (isset($_POST['register_button'])) {
     if (empty($error_array)) {
         $password = md5($password);
         $profile_pic = "images/user_profile/user_icon.png";
-        if (!mysqli_query($connection, "INSERT INTO users VALUES (NULL, '$first_name', '$last_name', '$email', '$password', '$gender', '$date', '$profile_pic', '0', '0', 'true' , 'true', ',')")) {
+        if (!mysqli_query($connection, "INSERT INTO users VALUES (NULL, '$first_name', '$last_name', '$email', 
+                '$password', '$gender', '$date', '$profile_pic', '0', '0', 'true' , 'true', ',')")) {
             echo "error description: " . mysqli_error($connection);
         } else {
             header("Location: index.php");

@@ -10,7 +10,9 @@ if(isset($_POST['post_button'])) {
 ?>
         <div class="wrapper">
             <div class="user_details column">
-                <a href="<?php echo str_replace(" ", "_", $user_loggedIn); ?>"> <img class="profile_picture" src="<?php echo $user_info['profile_picture']; ?>" alt="user picture"></a>
+                <a href="<?php echo str_replace(" ", "_", $user_loggedIn); ?>">
+                    <img class="profile_picture" src="<?php echo $user_info['profile_picture']; ?>" alt="user picture">
+                </a>
                 <br>
                 <?php
                     echo $user_info['first_name'] . " " . $user_info['last_name'] . "<br>";
