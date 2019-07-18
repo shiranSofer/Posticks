@@ -1,10 +1,11 @@
 body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    /*overflow: hidden;*/
     font-family: "Segoe Print", fantasy;
     /*border: 5px inset #ffcb91;*/
     background-attachment: fixed;
+    color: white;
 }
 .wall_container {
     background-image: url("../images/white_deck_wallpaper.jpg");
@@ -91,10 +92,9 @@ body, html {
 
 .post_form input[type=submit] {
     width: 10%;
-    position: absolute;
-    outline: 0;
-    margin-top: 0;
     height: 60px;
+    position: relative;
+    outline: 0;
     margin-right: 5px;
 }
 
@@ -103,6 +103,7 @@ body, html {
     /*height: 100px;*/
     font-size: 15px;
     padding: 0 5px;
+    overflow-y: auto;
     /*background-image: url("/images/posticks/pink_postick.png");*/
     /*background-size: 300px 180px;*/
     /*background-repeat: no-repeat;*/
@@ -135,4 +136,123 @@ body, html {
     background-color: transparent;
     text-decoration: blink;
     cursor: pointer;
+}
+
+#comment_iframe {
+    max-height: 250px;
+    width: 100%;
+    background-color: rgba(135, 135, 135, 0.57);
+    padding: 5px;
+    border-radius: 10px;
+    border: 0;
+}
+
+.comment_section {
+    padding: 0 5px 5px 5px;
+}
+
+.comment_section img {
+    border: 2px solid white;
+    border-radius: 2px;
+    padding: 0;
+    background-color: white;
+    float: left;
+    height: 30px;
+    margin: 0 12px 3px 5px;
+}
+
+.comment_section a {
+    font-size: 14px;
+    color: #74b9ff;
+    text-decoration: none;
+}
+
+.comment_section a:hover {
+    font-size: 14px;
+    color: darkblue;
+    cursor: pointer;
+    text-decoration: blink;
+}
+
+#comment_form textarea {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-top: 8px;
+    transition: 0.25s;
+    width: 80%;
+    height: 40px;
+}
+
+#comment_form textarea:focus {
+    width: 85%;
+    height: 40px;
+    border: 2px solid #74b9ff;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-right: 5px;
+}
+
+.date_time_span {
+    font-size: 10px;
+}
+
+.body_comment_span {
+    font-size: 12px;
+}
+
+#comment_form input[type=submit] {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 5px;
+    color: yellow;
+    cursor: pointer;
+    font-family: "Segoe Print", fantasy;
+    font-weight: bold;
+    margin: 8px 12px 8px 8px;
+    height: 40px;
+    position: absolute;
+}
+
+#comment_form input[type=submit]:hover {
+    border: 2px solid #74b9ff;
+    background-color: #74b9ff;
+    border-radius: 5px;
+    color: yellow;
+    cursor: pointer;
+    font-family: "Segoe Print", fantasy;
+    font-weight: bold;
+    transition: 0.25s;
+    margin: 8px 12px 8px 8px;
+    height: 40px;
+    position: absolute;
+}
+
+.post_newsfeed_options {
+    font-size: 12px;
+    color: yellow;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
 }

@@ -36,6 +36,13 @@ class User {
         return $this->user['available'];
     }
 
+    public function getProfilePicture() {
+        $user_email = $this->user['email'];
+        $user_query = mysqli_query($this->connection, "SELECT profile_picture FROM users WHERE email='$user_email'");
+        $row = mysqli_fetch_array($user_query);
+        return $row['profile_picture'];
+    }
+
     public function increaseNumberOfPosts() {
         $user_email = $this->user['email'];
         $num_posts = $this->getNumberOfPosts();
