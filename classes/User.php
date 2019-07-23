@@ -56,4 +56,22 @@ class User {
             return true;
         } else {return false;}
     }
+
+    public function removeFriend($user_email_to_remove) {
+        $logged_in_user = $this->user['email'];
+
+        $query = mysqli_query($this->connection, "SELECT friends_array FROM users WHERE email='$user_email_to_remove'");
+        $row = mysqli_fetch_array($query);
+        $friend_array_email = $row['friends_array'];
+
+        $new_friend_array = str_replace($user_email_to_remove . ",", "", $this->user['friends_array']);
+        if(!mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$logged_in_user'"))
+            echo "update friends array query (1) error: " . mysqli_error($this->connection);
+        $remove_friend = mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$logged_in_user'");
+
+        $new_friend_array = str_replace($this->user['email'] . ",", "", $friend_array_email);
+        if(!mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$user_email_to_remove'"))
+            echo "update friends array query (2) error: " . mysqli_error($this->connection);
+        $remove_friend = mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$user_email_to_remove'");
+    }
 }

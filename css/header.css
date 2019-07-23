@@ -53,3 +53,82 @@ nav a i:hover {
     border: 2px solid yellow;
     border-radius: 5px;
 }
+
+.search {
+    margin: -3px 0px 0 7%;
+}
+
+.search #search_text_input {
+    float: left;
+    outline: 0;
+}
+
+.search_button {
+    float: left;
+    text-align: center;
+    background-color: white;
+    margin: 10px 0px 0px -42px;
+    width: 40px;
+    height: 25px;
+    border: 2px solid;
+    border-radius: 2px;
+}
+
+.search_button img {
+    height: 23px;
+    margin-top: -1px;
+}
+
+input[type=text]:focus {
+    border: 2px solid white;
+    background-color: transparent;
+    border-radius: 4px;
+    color: yellow;
+    font-family: "Segoe Print", fantasy;
+    margin-top: 8px;
+    width: 220px;
+}
+
+.search_results {
+    position: relative;
+    z-index: 1;
+    margin: 42px 0 0 0;
+}
+
+.live_search_profile_pic img {
+    height: 40px;
+    margin: 5px 15px 0 5px;
+    float: left;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.result_display {
+    padding: 5px 5px 0 5px;
+    height: 80px;
+    margin-bottom: 1px;
+    border: 1px solid #ff0052;
+    background-color: #fff;
+    border-radius: 15px;
+}
+
+.result_display a {
+    float: none;
+}
+
+.live_search_text {
+    color: #555555;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.live_search_text p {
+    margin-left: 10px;
+    font-size: 10px;
+}
+
+.live_search_friend_request_button {
+    margin: -9px 0 0 60%;
+    position: absolute;
+}

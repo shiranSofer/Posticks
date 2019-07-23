@@ -5,8 +5,7 @@ class Post
     private $user_obj;
     private $connection;
 
-    public function __construct($connection, $user_email)
-    {
+    public function __construct($connection, $user_email){
         $this->connection = $connection;
         $this->user_obj = new User($connection, $user_email);
     }
@@ -72,7 +71,7 @@ class Post
 
                 if (!mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'"))
                     echo "user details error: " . mysqli_error($this->connection);
-                $user_details_query = mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture FROM users WHERE email='$posted_by'");
+                $user_details_query = mysqli_query($this->connection, "SELECT first_name, last_name, profile_picture, email FROM users WHERE email='$posted_by'");
 
                 $user_details_row = mysqli_fetch_array($user_details_query);
                 $user_first_name = $user_details_row['first_name'];
@@ -101,9 +100,19 @@ class Post
 
                 $date_message = $this->printPostTime($date_time);
 
+                /*Display delete friend button*/
+                if($this->user_obj->getEmail() !== $user_details_row['email']) {
+                    $button_friend_request = "<input type='submit' name='" . $posted_by_username . "' class='friends_button' value='remove friend'>";
+                } else {
+                    $button_friend_request = "<input type='submit' name='" . $posted_by_username . "' class='friends_button' value='remove friend' style='display: none'>";
+                }
+                if(isset($_POST[$posted_by_username])) {
+                    $this->user_obj->removeFriend($user_details_row['email']);
+                }
+
                 $str .= "<div class='status_post' onclick='toggle$id()' >
                             <div class='post_profile_pic'>
-                                <img src='$user_profile_pic' width='50'>
+                                <img src='$user_profile_pic' alt='user_profile_pic' style='width: 50px'>
                             </div>
                             <div class='posted_by'>
                                 <a href='$posted_by_username'> $user_first_name $user_last_name</a> $user_to &nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,8 +120,12 @@ class Post
                             </div>
                             <div id='post_body'>$body<br></div>
                             <div class='post_newsfeed_options'>
-                                Comments($number_of_comments)&nbsp;&nbsp;&nbsp;Likes(0)
+                                Comments($number_of_comments)&nbsp;&nbsp;&nbsp;
+                                <iframe src='like.php/?post_id=$id'></iframe>
                              </div>
+                             <form action='board.php' method='POST'>
+                                " . $button_friend_request ."
+                            </form>
                         </div>
                         <div class='post_comment' id='toggleComment$id' style='display: none;'>
                             <iframe src='comment_frame.php?post_id=$id' id='comment_iframe' name='comment_frame'></iframe>

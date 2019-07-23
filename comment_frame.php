@@ -2,19 +2,11 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/wall.css">
-
-<!--    <link rel="stylesheet" type="text/css" href="css/style.css">-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <title>Posticks</title>
 </head>
 <body>
-<style>
-    /** {*/
-    /*    font-size: 12px;*/
-    /*    color: white;*/
-    /*}*/
-</style>
 
 <?php
 require('config/config.php');
