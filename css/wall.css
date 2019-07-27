@@ -15,14 +15,16 @@ body, html {
     background-size: cover;
     border: 2px solid white;
 }
-.wrapper{
+.wrapper {
     margin: 0 auto;
     top: 50px;
     position: relative;
     padding: 0 10px;
-    width: 75%;
+    width: 80%;
     min-width: 950px;
     height: 85%;
+    display: flex;
+    flex-direction:row;
 }
 
 .profile_picture {
@@ -46,20 +48,46 @@ body, html {
     border-radius: 10px;
 }
 
+.friends_list {
+    width: 230px;
+    /*height: 210px;*/
+    text-align: center;
+}
+
+.friends_list_title {
+    font-size: 18px;
+    text-align: center;
+    color: #ff0052;
+    font-weight: bold;
+}
+
+.play_zone {
+    text-align: center;
+    margin-top: 10px;
+    width: 230px;
+}
+
+.messages {
+    color: #555555;
+    font-size: 14px;
+}
+
 .user_details {
-    width: 250px;
+    width: 230px;
+    height: 210px;
     text-align: center;
     float: left;
     margin-bottom: 20px;
 }
 
 .main_column {
-    float: right;
-    width: 72%;
+    float: left;
+    width: 66%;
     z-index: 2;
     min-height: 160px;
     overflow-y: auto;
     height: 100%;
+    margin-left: 10px;
 }
 
 .post_form {
@@ -101,7 +129,7 @@ body, html {
 
 .status_post {
     width: 96%;
-    height: 110px;
+    height: 214px;
     font-size: 15px;
     padding: 0 5px;
     overflow-y: auto;
@@ -139,11 +167,26 @@ body, html {
     cursor: pointer;
 }
 
+.post_body {
+    margin: 30px 0 0 0;
+}
+.image_post img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    height: 100px;
+}
+
+.image_post img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
 #comment_iframe {
     max-height: 250px;
-    width: 100%;
+    width: 90%;
     background-color: rgba(135, 135, 135, 0.57);
     padding: 5px;
+    margin: 0 0 0 35px;
     border-radius: 10px;
     border: 0;
 }

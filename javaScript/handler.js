@@ -37,6 +37,9 @@ function getLiveSearchUsers(value, user) {
         }*/
     });
 }
+function play_game() {
+    window.open('http://localhost:5000', '_blank');
+}
 
 function addOrDeleteFriend(current_email, friend_email) {
     url_controller = "../handlers/friend_request.php";

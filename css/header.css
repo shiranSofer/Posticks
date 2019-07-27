@@ -55,7 +55,7 @@ nav a i:hover {
 }
 
 .search {
-    margin: -3px 0px 0 7%;
+    margin: -3px 0 0 5%;
 }
 
 .search #search_text_input {
@@ -91,7 +91,7 @@ input[type=text]:focus {
 
 .search_results {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     margin: 42px 0 0 0;
 }
 

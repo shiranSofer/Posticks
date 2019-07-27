@@ -8,6 +8,10 @@ $confirm_password = "";
 $gender = "";
 $date = "";
 $error_array = array();
+$profile_pic_array = [  "user_pink.png", "user_orange.png",
+                        "user_green.png", "user_red.png",
+                        "user_blue.png", "user_yellow.png",
+                        "user_purple.png"];
 
 if (isset($_POST['register_button'])) {
     $first_name = strip_tags($_POST['reg_first_name']); //Remove html tags
@@ -29,6 +33,8 @@ if (isset($_POST['register_button'])) {
     $confirm_password = strip_tags($_POST['reg_confirm_password']); //Remove html tags
 
     $date = date("Y-m-d");
+
+    $gender = $_POST['reg_gender'];
 
     /*Validate password*/
     if ($password != $confirm_password) {
@@ -68,7 +74,8 @@ if (isset($_POST['register_button'])) {
     /*Form completed*/
     if (empty($error_array)) {
         $password = md5($password);
-        $profile_pic = "images/user_profile/user_icon.png";
+        $random_pic = rand(0, 6);
+        $profile_pic = "images/user_profile/" . $profile_pic_array[$random_pic];
         if (!mysqli_query($connection, "INSERT INTO users VALUES (NULL, '$first_name', '$last_name', '$email', 
                 '$password', '$gender', '$date', '$profile_pic', '0', '0', 'true' , 'true', ',')")) {
             echo "error description: " . mysqli_error($connection);

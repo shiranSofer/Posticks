@@ -110,7 +110,7 @@ body, html {
     font-size: 12px;
 }
 
-input[type=email], input[type=password], input[type=text] {
+input[type=email], input[type=password], input[type=text]{
     border: 2px solid white;
     background-color: transparent;
     border-radius: 4px;
@@ -131,7 +131,7 @@ input[type=email]:focus, input[type=password]:focus, input[type=text]:focus {
     width: 220px;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
     border: 2px solid white;
     background-color: transparent;
     border-radius: 5px;
@@ -142,7 +142,7 @@ input[type=submit] {
     margin-top: 8px;
 }
 
-input[type=submit]:hover {
+input[type=submit]:hover , input[type=button]:hover{
     border: 2px solid #74b9ff;
     background-color: #74b9ff;
     border-radius: 5px;

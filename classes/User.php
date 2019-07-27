@@ -21,7 +21,12 @@ class User {
     }
 
     public function getNumberOfPosts() {
-        return $this->user['num_posts'];
+        $user_email = $this->user['email'];
+        $user_query = mysqli_query($this->connection, "SELECT * FROM posts WHERE posted_by='$user_email' AND deleted='false'");
+        $row = mysqli_fetch_array($user_query);
+        return mysqli_num_rows($user_query);
+
+//        return $this->user['num_posts'];
     }
 
     public function getNumberOfLikes() {
@@ -46,8 +51,7 @@ class User {
     public function increaseNumberOfPosts() {
         $user_email = $this->user['email'];
         $num_posts = $this->getNumberOfPosts();
-        $num_posts++;
-        $update_query = mysqli_query($this->connection, "UPDATE users SET num_posts='$num_posts' WHERE email='$user_email'");
+        mysqli_query($this->connection, "UPDATE users SET num_posts='$num_posts' WHERE email='$user_email'");
     }
 
     public function isFriend($user_email_to_check) {
@@ -67,11 +71,22 @@ class User {
         $new_friend_array = str_replace($user_email_to_remove . ",", "", $this->user['friends_array']);
         if(!mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$logged_in_user'"))
             echo "update friends array query (1) error: " . mysqli_error($this->connection);
-        $remove_friend = mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$logged_in_user'");
 
-        $new_friend_array = str_replace($this->user['email'] . ",", "", $friend_array_email);
+        /*$new_friend_array = str_replace($this->user['email'] . ",", "", $friend_array_email);
         if(!mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$user_email_to_remove'"))
             echo "update friends array query (2) error: " . mysqli_error($this->connection);
-        $remove_friend = mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$user_email_to_remove'");
+        $remove_friend = mysqli_query($this->connection, "UPDATE users SET friends_array='$new_friend_array' WHERE email='$user_email_to_remove'");*/
+    }
+
+    public function addFriend($email_to_add)
+    {
+        $logged_in_user = $this->user['email'];
+
+        $get_current_user_friends_array = mysqli_query($this->connection, "SELECT friends_array FROM users WHERE email='$logged_in_user'");
+        $get_current_user_friends_array_row = mysqli_fetch_array($get_current_user_friends_array);
+        $friend_array_email = $get_current_user_friends_array_row['friends_array'] . $email_to_add . ",";
+
+        if (!mysqli_query($this->connection, "UPDATE users SET friends_array='$friend_array_email' WHERE email='$logged_in_user'"))
+            echo "UPDATE friends array query error: " . mysqli_error($this->connection);
     }
 }

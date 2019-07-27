@@ -14,7 +14,7 @@ require 'form_handlers/register_handler.php';
 <div class="background-image"></div>
 <div class="background-container">
     <h1>Register to POSTICKS</h1>
-    <h3>something</h3>
+    <h3>Welcome</h3>
     <table>
         <tr>
             <td colspan="2" style="width: 70%">
