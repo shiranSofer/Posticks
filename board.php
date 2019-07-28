@@ -2,7 +2,7 @@
 include("header.php");
 include("classes/User.php");
 include("classes/Post.php");
-include("handlers/friend_request.php");
+include("handlers/follow_friend.php");
 
 $error_message = "";
 if(isset($_POST['post_button'])) {

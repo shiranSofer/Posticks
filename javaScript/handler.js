@@ -42,7 +42,7 @@ function play_game() {
 }
 
 function addOrDeleteFriend(current_email, friend_email) {
-    url_controller = "../handlers/friend_request.php";
+    url_controller = "../handlers/follow_friend.php";
     parameters = {
         current_email_p: current_email,
         friend_email_p: friend_email
